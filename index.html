@@ -150,7 +150,7 @@
             color: var(--matte-white);
         }
 
-        /* --- BUTTON STYLING (BUG FIX & TACTILE STYLE) --- */
+        /* --- BUTTON STYLING --- */
         .btn-tactile {
             font-family: var(--font-sans);
             font-weight: bold;
@@ -262,18 +262,38 @@
             animation: pulseScan 2s infinite ease-in-out;
         }
 
-        /* --- STATE 2: CODY'S INTEL --- */
-        .cody-animation-frame {
+        /* --- STATE 2: CODY'S INTEL (ROGER RABBIT VIDEO-BEHIND-SVG) --- */
+        .mixed-media-pipeline {
             width: 100%;
             height: 200px;
             background-color: var(--stark-black);
             border: var(--border-thin);
             box-shadow: var(--shadow-flat);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
             overflow: hidden;
+        }
+
+        /* Video Base Layer */
+        .veo-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.75;
+            z-index: 1;
+        }
+
+        /* Cody SVG Layer (Absolute Positioned On Top) */
+        .cody-svg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none; /* Let clicks pass through if needed */
         }
 
         /* CSS Animation for Cody's Wink and Spark's Glow */
@@ -288,8 +308,8 @@
         }
 
         .cody-svg {
-            width: 160px;
-            height: 160px;
+            width: 100%;
+            height: 100%;
         }
 
         .cody-wink-eye {
@@ -309,6 +329,7 @@
             border: var(--border-thin);
             padding: 15px;
             box-shadow: var(--shadow-flat);
+            z-index: 10;
         }
 
         .audio-controls {
@@ -528,7 +549,7 @@
                 <button class="btn-tactile" id="btn-simulate-scan" style="width: 100%;">Simulate QR Scan</button>
             </section>
 
-            <!-- --- STATE 2: CODY'S INTEL --- -->
+            <!-- --- STATE 2: CODY'S INTEL (ROGER RABBIT SHIELD) --- -->
             <section class="state-pane" id="pane-intel">
                 <div class="pane-header">
                     <p>Step 2 — The Bits</p>
@@ -536,68 +557,77 @@
                 </div>
 
                 <div class="pane-body">
-                    <!-- Inline High-Fidelity SVG of Cody & The Spark -->
-                    <div class="cody-animation-frame">
-                        <svg class="cody-svg" viewBox="0 0 160 160">
-                            <!-- Background Grid Lines -->
-                            <path d="M 0,20 L 160,20 M 0,60 L 160,60 M 0,100 L 160,100 M 0,140 L 160,140 M 20,0 L 20,160 M 60,0 L 60,160 M 100,0 L 100,160 M 140,0 L 140,160" stroke="#111111" stroke-width="1" />
-                            
-                            <!-- Cody (The Box Apprentice) -->
-                            <!-- Legs & Feet -->
-                            <rect x="55" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
-                            <rect x="75" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
-                            <rect x="45" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                            <rect x="71" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                            
-                            <!-- Body -->
-                            <rect x="45" y="65" width="46" height="50" fill="#F5C400" stroke="#000000" stroke-width="3" />
-                            <!-- Arms -->
-                            <path d="M 45,80 L 25,100" stroke="#000000" stroke-width="3" fill="none" />
-                            <circle cx="23" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                            
-                            <path d="M 91,80 L 115,100" stroke="#000000" stroke-width="3" fill="none" />
-                            <circle cx="117" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                            
-                            <!-- Head (Winking) -->
-                            <rect x="50" y="25" width="36" height="35" fill="#F5C400" stroke="#000000" stroke-width="3" />
-                            <circle cx="60" cy="40" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
-                            <circle cx="60" cy="40" r="2" fill="#000000" />
-                            
-                            <!-- Winking Eye -->
-                            <path class="cody-wink-eye" d="M 72,40 Q 76,34 80,40" stroke="#000000" stroke-width="2.5" fill="none" />
-                            
-                            <!-- Smile -->
-                            <path d="M 62,50 Q 68,55 74,50" stroke="#000000" stroke-width="2.5" fill="none" />
-                            
-                            <!-- Hair / Antenna -->
-                            <path d="M 68,25 L 68,15 M 68,25 L 60,18 M 68,25 L 76,18" stroke="#000000" stroke-width="2" />
+                    <!-- Mixed-Media Stack -->
+                    <div class="mixed-media-pipeline">
+                        <!-- Layer 1: Veo 3.1 Background Video -->
+                        <video class="veo-video-bg" id="veo-video" loop muted playsinline>
+                            <source src="dorset_1862_bg.mp4" type="video/mp4">
+                        </video>
 
-                            <!-- Lead to Spark -->
-                            <path d="M 23,102 Q 60,135 125,95" stroke="#000000" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+                        <!-- Layer 2: Cody SVG Overlay (Absolute Positioned) -->
+                        <div class="cody-svg-overlay">
+                            <svg class="cody-svg" viewBox="0 0 160 160">
+                                <!-- Background Grid Lines -->
+                                <path d="M 0,20 L 160,20 M 0,60 L 160,60 M 0,100 L 160,100 M 0,140 L 160,140 M 20,0 L 20,160 M 60,0 L 60,160 M 100,0 L 100,160 M 140,0 L 140,160" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" />
+                                
+                                <!-- Cody (The Box Apprentice) -->
+                                <!-- Legs & Feet -->
+                                <rect x="55" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
+                                <rect x="75" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
+                                <rect x="45" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                <rect x="71" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                
+                                <!-- Body -->
+                                <rect x="45" y="65" width="46" height="50" fill="#F5C400" stroke="#000000" stroke-width="3" />
+                                <!-- Arms -->
+                                <path d="M 45,80 L 25,100" stroke="#000000" stroke-width="3" fill="none" />
+                                <circle cx="23" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                
+                                <path d="M 91,80 L 115,100" stroke="#000000" stroke-width="3" fill="none" />
+                                <circle cx="117" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                
+                                <!-- Head (Winking) -->
+                                <rect x="50" y="25" width="36" height="35" fill="#F5C400" stroke="#000000" stroke-width="3" />
+                                <circle cx="60" cy="40" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                                <circle cx="60" cy="40" r="2" fill="#000000" />
+                                
+                                <!-- Winking Eye -->
+                                <path class="cody-wink-eye" d="M 72,40 Q 76,34 80,40" stroke="#000000" stroke-width="2.5" fill="none" />
+                                
+                                <!-- Smile -->
+                                <path d="M 62,50 Q 68,55 74,50" stroke="#000000" stroke-width="2.5" fill="none" />
+                                
+                                <!-- Hair / Antenna -->
+                                <path d="M 68,25 L 68,15 M 68,25 L 60,18 M 68,25 L 76,18" stroke="#000000" stroke-width="2" />
 
-                            <!-- Spark (The AI Companion) -->
-                            <g class="spark-glow-element">
-                                <!-- Outer Aura -->
-                                <circle cx="125" cy="95" r="22" fill="#F5C400" opacity="0.25" />
-                                <circle cx="125" cy="95" r="15" fill="#00A86B" opacity="0.4" />
-                                <!-- Core Flame -->
-                                <path d="M 125,78 C 131,86 135,92 135,97 C 135,102 131,106 125,106 C 119,106 115,102 115,97 C 115,92 119,86 125,78 Z" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
-                                <!-- Face on Spark -->
-                                <circle cx="122" cy="96" r="1.5" fill="#000000" />
-                                <circle cx="128" cy="96" r="1.5" fill="#000000" />
-                                <path d="M 123,100 Q 125,102 127,100" stroke="#000000" stroke-width="1" fill="none" />
-                            </g>
-                        </svg>
+                                <!-- Lead to Spark -->
+                                <path d="M 23,102 Q 60,135 125,95" stroke="#000000" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+
+                                <!-- Spark (The AI Companion) -->
+                                <g class="spark-glow-element">
+                                    <!-- Outer Aura -->
+                                    <circle cx="125" cy="95" r="22" fill="#F5C400" opacity="0.25" />
+                                    <circle cx="125" cy="95" r="15" fill="#00A86B" opacity="0.4" />
+                                    <!-- Core Flame -->
+                                    <path d="M 125,78 C 131,86 135,92 135,97 C 135,102 131,106 125,106 C 119,106 115,102 115,97 C 115,92 119,86 125,78 Z" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                                    <!-- Face on Spark -->
+                                    <circle cx="122" cy="96" r="1.5" fill="#000000" />
+                                    <circle cx="128" cy="96" r="1.5" fill="#000000" />
+                                    <path d="M 123,100 Q 125,102 127,100" stroke="#000000" stroke-width="1" fill="none" />
+                                </g>
+                            </svg>
+                        </div>
                     </div>
 
-                    <!-- Audio Player Mock -->
+                    <!-- Audio Player Mock / Layer 3 subtitles loaded from local config -->
                     <div class="audio-player-block">
                         <div class="audio-controls">
                             <button class="play-btn" id="btn-audio-play" aria-label="Play audio">▶</button>
                             <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ochre-gold); font-weight: bold;">Cody RP Voiceover</span>
                         </div>
                         <div class="audio-subtitles" id="audio-text">
-                            "A woman says: 'Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?'"
+                            <!-- Populated dynamically from manifest.json database -->
+                            Loading historical claim...
                         </div>
                     </div>
 
@@ -672,7 +702,24 @@
             const couponClickZone = document.getElementById('coupon-click-zone');
             const couponTip = document.getElementById('coupon-tip');
 
+            // Layer 1 video element
+            const veoVideo = document.getElementById('veo-video');
+            const audioTextElement = document.getElementById('audio-text');
+
             let auditCompleted = false;
+            let claimsManifest = null;
+
+            // Load verified un-hallucinated narrative from manifest database
+            fetch('manifest.json')
+                .then(res => res.json())
+                .then(data => {
+                    claimsManifest = data;
+                    audioTextElement.textContent = `"${data.narrative}"`;
+                })
+                .catch(err => {
+                    console.error('Failed to load local manifest claims database.', err);
+                    audioTextElement.textContent = `"Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?"`;
+                });
 
             // --- WEB AUDIO API SOUND SYSTEM ---
             const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -737,7 +784,7 @@
             let isSpeaking = false;
             
             function speakCodyIntel() {
-                const text = 'Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?';
+                const text = claimsManifest ? claimsManifest.narrative : 'Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?';
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
                     const utterance = new SpeechSynthesisUtterance(text);
@@ -771,6 +818,10 @@
                 isSpeaking = false;
                 btnAudioPlay.textContent = '▶';
                 btnAudioPlay.style.backgroundColor = 'var(--emerald-green)';
+                
+                // Pause background video
+                veoVideo.pause();
+
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
                 }
@@ -802,6 +853,10 @@
                 intelProgress.style.width = '0%';
                 btnAudioPlay.textContent = '⏸';
                 btnAudioPlay.style.backgroundColor = 'var(--ochre-gold)';
+
+                // Play Veo 3.1 background video
+                veoVideo.currentTime = 0;
+                veoVideo.play().catch(err => console.log('Video auto-play delayed until user interaction.', err));
 
                 // Speak history
                 speakCodyIntel();
@@ -881,6 +936,9 @@
                 tabYield.classList.remove('unlocked');
                 tabYield.disabled = true;
 
+                // Stop video and voice
+                stopAudioPlayback();
+
                 // Return to State 1
                 switchState('find');
             });
@@ -896,6 +954,11 @@
                 paneFind.classList.remove('active');
                 paneIntel.classList.remove('active');
                 paneYield.classList.remove('active');
+
+                // Stop media when leaving state 2
+                if (state !== 'intel') {
+                    stopAudioPlayback();
+                }
 
                 if (state === 'find') {
                     tabFind.classList.add('active');

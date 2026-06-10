@@ -447,7 +447,7 @@
             bottom: 4px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.7rm;
+            font-size: 0.7rem;
             background-color: var(--emerald-green);
             color: white;
             padding: 2px 6px;
@@ -662,15 +662,15 @@
 
                 <div class="pane-body">
                     <div class="yield-container">
-                        <!-- Background image placeholder of Black Pepper Corns' Chicken Biryani -->
-                        <img src="chicken_biryani.png" alt="Black Pepper Corns' authentic Chicken Biryani" class="yield-img" onerror="this.style.display='none';">
+                        <!-- Background image of The Crown Lunch Club -->
+                        <img src="crown_food.png" alt="The Crown Lunch Club" class="yield-img" onerror="this.style.display='none';">
                     </div>
 
                     <div class="coupon-card" id="coupon-click-zone">
                         <div class="coupon-headline">Exclusive Local Reward</div>
-                        <div class="coupon-code">S_PLAZA_10</div>
+                        <div class="coupon-code">CROWN_10</div>
                         <p style="font-size: 0.8rem; color: #888888;">
-                            10% OFF any Biryani or Main Dish at Black Pepper Corns on Union Street.
+                            10% OFF any Lunch Club Meal at The Crown on Dover Street / Union Street.
                         </p>
                         <div class="copy-success-tip" id="coupon-tip">✓ Copied!</div>
                     </div>
@@ -922,7 +922,7 @@
             // --- STATE 3: REDEMPTION, COPY & RESET ---
             couponClickZone.addEventListener('click', () => {
                 playSound('click');
-                navigator.clipboard.writeText('S_PLAZA_10').then(() => {
+                navigator.clipboard.writeText('CROWN_10').then(() => {
                     couponTip.style.display = 'block';
                     setTimeout(() => {
                         couponTip.style.display = 'none';

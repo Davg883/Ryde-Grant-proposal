@@ -583,50 +583,53 @@
                                 <!-- Background Grid Lines -->
                                 <path d="M 0,20 L 160,20 M 0,60 L 160,60 M 0,100 L 160,100 M 0,140 L 160,140 M 20,0 L 20,160 M 60,0 L 60,160 M 100,0 L 100,160 M 140,0 L 140,160" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" />
                                 
-                                <!-- Cody (The Box Apprentice) -->
-                                <!-- Legs & Feet -->
-                                <rect x="55" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
-                                <rect x="75" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
-                                <rect x="45" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                                <rect x="71" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                                
-                                <!-- Body -->
-                                <rect x="45" y="65" width="46" height="50" fill="#F5C400" stroke="#000000" stroke-width="3" />
-                                <!-- Arms -->
-                                <path d="M 45,80 L 25,100" stroke="#000000" stroke-width="3" fill="none" />
-                                <circle cx="23" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                                
-                                <path d="M 91,80 L 115,100" stroke="#000000" stroke-width="3" fill="none" />
-                                <circle cx="117" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
-                                
-                                <!-- Head (Winking) -->
-                                <rect x="50" y="25" width="36" height="35" fill="#F5C400" stroke="#000000" stroke-width="3" />
-                                <circle cx="60" cy="40" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
-                                <circle cx="60" cy="40" r="2" fill="#000000" />
-                                
-                                <!-- Winking Eye -->
-                                <path class="cody-wink-eye" d="M 72,40 Q 76,34 80,40" stroke="#000000" stroke-width="2.5" fill="none" />
-                                
-                                <!-- Smile -->
-                                <path d="M 62,50 Q 68,55 74,50" stroke="#000000" stroke-width="2.5" fill="none" />
-                                
-                                <!-- Hair / Antenna -->
-                                <path d="M 68,25 L 68,15 M 68,25 L 60,18 M 68,25 L 76,18" stroke="#000000" stroke-width="2" />
+                                <!-- Cody and Spark wrapper (moved left and made 82% transparent to reveal video details) -->
+                                <g transform="translate(-25, 0)" style="opacity: 0.82;">
+                                    <!-- Cody (The Box Apprentice) -->
+                                    <!-- Legs & Feet -->
+                                    <rect x="55" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
+                                    <rect x="75" y="110" width="8" height="25" fill="#121212" stroke="#000000" stroke-width="2" />
+                                    <rect x="45" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                    <rect x="71" y="130" width="22" height="10" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                    
+                                    <!-- Body -->
+                                    <rect x="45" y="65" width="46" height="50" fill="#F5C400" stroke="#000000" stroke-width="3" />
+                                    <!-- Arms -->
+                                    <path d="M 45,80 L 25,100" stroke="#000000" stroke-width="3" fill="none" />
+                                    <circle cx="23" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                    
+                                    <path d="M 91,80 L 115,100" stroke="#000000" stroke-width="3" fill="none" />
+                                    <circle cx="117" cy="102" r="5" fill="#F5C400" stroke="#000000" stroke-width="2" />
+                                    
+                                    <!-- Head (Winking) -->
+                                    <rect x="50" y="25" width="36" height="35" fill="#F5C400" stroke="#000000" stroke-width="3" />
+                                    <circle cx="60" cy="40" r="5" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                                    <circle cx="60" cy="40" r="2" fill="#000000" />
+                                    
+                                    <!-- Winking Eye -->
+                                    <path class="cody-wink-eye" d="M 72,40 Q 76,34 80,40" stroke="#000000" stroke-width="2.5" fill="none" />
+                                    
+                                    <!-- Smile -->
+                                    <path d="M 62,50 Q 68,55 74,50" stroke="#000000" stroke-width="2.5" fill="none" />
+                                    
+                                    <!-- Hair / Antenna -->
+                                    <path d="M 68,25 L 68,15 M 68,25 L 60,18 M 68,25 L 76,18" stroke="#000000" stroke-width="2" />
 
-                                <!-- Lead to Spark -->
-                                <path d="M 23,102 Q 60,135 125,95" stroke="#000000" stroke-width="2" stroke-dasharray="3,3" fill="none" />
+                                    <!-- Lead to Spark -->
+                                    <path d="M 23,102 Q 60,135 125,95" stroke="#000000" stroke-width="2" stroke-dasharray="3,3" fill="none" />
 
-                                <!-- Spark (The AI Companion) -->
-                                <g class="spark-glow-element">
-                                    <!-- Outer Aura -->
-                                    <circle cx="125" cy="95" r="22" fill="#F5C400" opacity="0.25" />
-                                    <circle cx="125" cy="95" r="15" fill="#00A86B" opacity="0.4" />
-                                    <!-- Core Flame -->
-                                    <path d="M 125,78 C 131,86 135,92 135,97 C 135,102 131,106 125,106 C 119,106 115,102 115,97 C 115,92 119,86 125,78 Z" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
-                                    <!-- Face on Spark -->
-                                    <circle cx="122" cy="96" r="1.5" fill="#000000" />
-                                    <circle cx="128" cy="96" r="1.5" fill="#000000" />
-                                    <path d="M 123,100 Q 125,102 127,100" stroke="#000000" stroke-width="1" fill="none" />
+                                    <!-- Spark (The AI Companion) -->
+                                    <g class="spark-glow-element">
+                                        <!-- Outer Aura -->
+                                        <circle cx="125" cy="95" r="22" fill="#F5C400" opacity="0.25" />
+                                        <circle cx="125" cy="95" r="15" fill="#00A86B" opacity="0.4" />
+                                        <!-- Core Flame -->
+                                        <path d="M 125,78 C 131,86 135,92 135,97 C 135,102 131,106 125,106 C 119,106 115,102 115,97 C 115,92 119,86 125,78 Z" fill="#FFFFFF" stroke="#000000" stroke-width="2" />
+                                        <!-- Face on Spark -->
+                                        <circle cx="122" cy="96" r="1.5" fill="#000000" />
+                                        <circle cx="128" cy="96" r="1.5" fill="#000000" />
+                                        <path d="M 123,100 Q 125,102 127,100" stroke="#000000" stroke-width="1" fill="none" />
+                                    </g>
                                 </g>
                             </svg>
                         </div>

@@ -17,6 +17,7 @@
 
     <!-- Optional: Add a high-res icon for when added to Home Screen -->
     <link rel="apple-touch-icon" href="assets/icon.png">
+    <link rel="manifest" href="manifest.json">
 
     <style>
         /* --- TACTILE NEOBRUTALIST DESIGN SYSTEM --- */
@@ -695,7 +696,7 @@
                             <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--ochre-gold); font-weight: bold;">Cody RP Voiceover</span>
                         </div>
                         <div class="audio-subtitles" id="audio-text">
-                            <!-- Populated dynamically from manifest.json database -->
+                            <!-- Populated dynamically from narrative.json database -->
                             Loading historical claim...
                         </div>
                     </div>
@@ -779,15 +780,15 @@
             let auditCompleted = false;
             let claimsManifest = null;
 
-            // Load verified un-hallucinated narrative from manifest database
-            fetch('manifest.json')
+            // Load verified un-hallucinated narrative from narrative database
+            fetch('narrative.json')
                 .then(res => res.json())
                 .then(data => {
                     claimsManifest = data;
                     audioTextElement.textContent = `"${data.narrative}"`;
                 })
                 .catch(err => {
-                    console.error('Failed to load local manifest claims database.', err);
+                    console.error('Failed to load local narrative claims database.', err);
                     audioTextElement.textContent = `"Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?"`;
                 });
 

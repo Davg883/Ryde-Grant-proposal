@@ -1,7 +1,21 @@
 {
-  "node_id": "01_dorset_hotel",
-  "location": "Dover Street, Ryde",
-  "era": "1862",
-  "narrative": "Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?",
-  "audio_voice": "en-GB-Algieba-Newscaster"
+  "short_name": "Vectis ONE",
+  "name": "The Shadow Government Mystery Trail",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "display": "standalone",
+  "orientation": "portrait"
 }

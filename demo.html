@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport fit=cover is essential for handling phone notches natively -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Welcome | The Shadow Government Mystery Trail</title>
+  
+  <!-- iOS Standalone Web App Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Vectis ONE">
+  
+  <!-- Android Web App Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#090d16">
+
+  <!-- Optional: Add a high-res icon for when added to Home Screen -->
+  <link rel="apple-touch-icon" href="assets/icon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --solent-navy: #090d16;
+      --sovereign-gold: #f4c542;
+      --deep-tech-cyan: #0df5e3;
+      --charcoal: #121824;
+      --off-white: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Core mobile App-behaviours */
+    html, body {
+      background-color: var(--solent-navy);
+      color: var(--off-white);
+      font-family: 'Outfit', sans-serif;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevents overall body scroll bars */
+      overscroll-behavior: none; /* Disables standard pull-to-refresh and window bouncing */
+      -webkit-tap-highlight-color: transparent; /* Removes blue tap overlay in Safari */
+      user-select: none; /* Prevents text-selection highlights while playing */
+      -webkit-user-select: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Crucial fix for iOS Safari 100vh address-bar bug */
+      height: 100vh;
+      height: -webkit-fill-available; 
+    }
+
+    /* Desktop View: Formatted inside an emulated phone frame */
+    .app-container {
+      width: 100%;
+      max-width: 440px;
+      height: 92vh;
+      max-height: 850px;
+      background-color: var(--charcoal);
+      border: 1px solid rgba(244, 197, 66, 0.2);
+      border-radius: 28px;
+      padding: 40px 24px 30px 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between; /* Pushes button to bottom, header to top */
+      text-align: center;
+      position: relative;
+      overflow-y: auto; /* Allows smooth internal scrolling if text overflows */
+      scrollbar-width: none; /* Hide scrollbars for clean look */
+    }
+
+    .app-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Desktop Notch Simulator */
+    .app-container::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      width: 80px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+
+    .header-badge {
+      font-size: 11px;
+      color: var(--deep-tech-cyan);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: var(--sovereign-gold);
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      color: #a0aec0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .intro-paragraph {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: #cbd5e0;
+      margin-bottom: 25px;
+      padding: 0 5px;
+    }
+
+    .intro-paragraph span {
+      color: var(--sovereign-gold);
+      font-weight: 600;
+    }
+
+    /* 3-Step Instruction Matrix */
+    .steps-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .step-card {
+      background: rgba(9, 13, 22, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      transition: all 0.25s ease;
+    }
+
+    .step-card:hover {
+      border: 1px solid rgba(13, 245, 227, 0.25);
+      background: rgba(9, 13, 22, 0.6);
+    }
+
+    .step-number {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      color: var(--sovereign-gold);
+      font-weight: 700;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid var(--sovereign-gold);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .step-text h3 {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    .step-text p {
+      font-size: 12px;
+      color: #a0aec0;
+      line-height: 1.4;
+    }
+
+    /* Glowing Action Button */
+    .start-btn {
+      width: 100%;
+      background-color: var(--sovereign-gold);
+      color: var(--solent-navy);
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(244, 197, 66, 0.2);
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-block;
+      touch-action: manipulation; /* Removes 300ms tap delay on mobile */
+    }
+
+    .start-btn:hover {
+      background-color: #ffd875;
+      box-shadow: 0 4px 20px rgba(244, 197, 66, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .start-btn:active {
+      transform: translateY(1px);
+    }
+
+    .footer-note {
+      font-size: 10px;
+      color: #4a5568;
+      margin-top: 20px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ─── THE NATIVE MOBILE OVERRIDE ─── */
+    /* When screen width is 480px or less, the desktop container dissolves */
+    @media (max-width: 480px) {
+      body {
+        align-items: stretch; /* Stretch container to full viewport */
+      }
+      .app-container {
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        background-color: var(--solent-navy); /* Matches background seamlessly */
+        /* env(safe-area-inset) handles notches and home bars on iPhone X and later */
+        padding: calc(30px + env(safe-area-inset-top)) 24px calc(20px + env(safe-area-inset-bottom)) 24px;
+      }
+      .app-container::before {
+        display: none; /* Hide the faux-notch on actual phones */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <div>
+      <div class="header-badge">Sovereign Intel</div>
+      <h1>The Shadow Government</h1>
+      <div class="subtitle">Mystery Trail — Ryde, 1862</div>
+      
+      <p class="intro-paragraph">
+        A secret government dispatch has gone missing on Dover Street. 
+        You have been recruited as a <span>19th-Century Telegram Boy</span>. Follow the physical breadcrumbs hidden across the town, unlock the historical truth, and save the Empire.
+      </p>
+
+      <!-- The 3-Step Matrix -->
+      <div class="steps-container">
+        
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-text">
+            <h3>FIND (The Atoms)</h3>
+            <p>Locate the physical 'Sovereign Cans' hidden near Ryde’s historic landmarks.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-text">
+            <h3>DECODE (The Bits)</h3>
+            <p>Scan the code. Listen to Cody as he reveals the secret 1860s espionage history of the Solent.</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-text">
+            <h3>YIELD (The Reward)</h3>
+            <p>Unlock real-world rewards and menu discounts at local independent venues.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Start Button & Footer container to hold them at the bottom -->
+    <div style="width: 100%;">
+      <a href="trail.html" class="start-btn">Begin the Hunt</a>
+      <div class="footer-note">Vectis ONE • Powered by local AI</div>
+    </div>
+  </div>
+
+</body>
+</html>

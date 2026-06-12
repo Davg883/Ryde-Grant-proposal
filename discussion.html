@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Partnership Model Briefing | Shademakers UK & Vectis ONE</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --navy: #090d16;
+      --gold: #d4a017;
+      --charcoal: #2d3748;
+      --paper: #fcfcf9;
+      --border-color: #e2e8f0;
+      --light-grey: #f7fafc;
+      --accent-cyan: #0b8a8f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ecece6;
+      color: var(--charcoal);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    /* Page Container representing paper sheet */
+    .document-page {
+      background: var(--paper);
+      max-width: 850px;
+      margin: 0 auto 40px auto;
+      padding: 80px 70px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+      border: 1px solid #dcdcd5;
+      position: relative;
+    }
+
+    /* Print control button bar */
+    .action-bar {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-action {
+      background-color: var(--navy);
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(9, 13, 22, 0.15);
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action:hover {
+      background-color: #17243c;
+      transform: translateY(-1px);
+    }
+
+    .btn-back {
+      background-color: #fff;
+      color: var(--navy);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-back:hover {
+      background-color: var(--light-grey);
+    }
+
+    /* --- EDITORIAL STYLING --- */
+    .doc-header {
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .doc-category {
+      font-family: 'Outfit', sans-serif;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .doc-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      color: var(--navy);
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .doc-subtitle {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #718096;
+    }
+
+    /* Metadata table */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      background: var(--light-grey);
+      border: 1px solid var(--border-color);
+      padding: 20px 25px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      font-size: 13.5px;
+    }
+
+    .meta-item strong {
+      font-family: 'Outfit', sans-serif;
+      color: var(--navy);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Typography & Sections */
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-bottom: 20px;
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Callouts */
+    .callout-box {
+      border-left: 4px solid var(--gold);
+      background: var(--light-grey);
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+    }
+
+    .callout-box h4 {
+      font-family: 'Outfit', sans-serif;
+      color: var(--navy);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .callout-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 13.5px;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--navy);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--light-grey);
+    }
+
+    /* Sign-off Block */
+    .sign-off-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 2px solid var(--navy);
+    }
+
+    .signature-line {
+      border-top: 1px solid #718096;
+      margin-top: 65px;
+      padding-top: 8px;
+      font-size: 12px;
+      color: #718096;
+      text-align: center;
+    }
+
+    /* Page Numbers for Print */
+    .page-footer {
+      display: none;
+    }
+
+    /* --- PRINT STYLESHEET OVERRIDES --- */
+    @media print {
+      body {
+        background-color: #fff;
+        color: #000;
+        padding: 0;
+        font-size: 12pt;
+      }
+
+      .action-bar {
+        display: none;
+      }
+
+      .document-page {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+        page-break-after: always;
+      }
+
+      .document-page:last-child {
+        page-break-after: avoid;
+      }
+
+      .btn-action {
+        display: none;
+      }
+
+      h2 {
+        page-break-after: avoid;
+      }
+
+      tr, img {
+        page-break-inside: avoid;
+      }
+
+      .meta-grid {
+        background: #fff !important;
+        border: 1px solid #000;
+      }
+
+      .callout-box {
+        background: #fff !important;
+        border: 1px solid #000;
+        border-left: 4px solid #000;
+      }
+
+      th {
+        background-color: #000 !important;
+        color: #fff !important;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f7f7f7 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- --- ACTION CONTROLS --- -->
+  <div class="action-bar">
+    <a href="showcase.html" class="btn-action btn-back">
+      <span>◀ Return to Showcase</span>
+    </a>
+    <button onclick="window.print()" class="btn-action">
+      <span>Print / Save to PDF</span>
+      <span style="font-size: 14px;">🖨️</span>
+    </button>
+  </div>
+
+  <!-- --- FIRST PAGE: EXECUTIVE SUMMARY & STRUCTURE --- -->
+  <main class="document-page">
+    <header class="doc-header">
+      <div class="doc-category">Partnership Briefing Document</div>
+      <h1 class="doc-title">Sovereign Partnership Model</h1>
+      <div class="doc-subtitle">Isle of Wight Foundation Grant & Delivery Allocation Plan</div>
+    </header>
+
+    <div class="meta-grid">
+      <div class="meta-item">
+        <strong>Fiduciary Lead (Lead Bidder)</strong>
+        Shademakers UK (Department Ryde)
+      </div>
+      <div class="meta-item">
+        <strong>Technical & Delivery Contractor</strong>
+        Isle Connect (Vectis ONE)
+      </div>
+      <div class="meta-item">
+        <strong>Deadline Date</strong>
+        Monday, 15 June 2026 (12:00 Noon)
+      </div>
+      <div class="meta-item">
+        <strong>Document Version & Ref</strong>
+        v1.4 / Ref: IOW-FDN-SH-2026
+      </div>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>
+      This briefing outlines the contractual and operational terms of the collaborative bid submitted to the **Isle of Wight Foundation** for the **Monday, 15 June 2026** deadline. The total grant requested is **£14,000**, reserved entirely for material capital and equipment expenditure.
+    </p>
+    <p>
+      The programme operates on the **Sovereign Partnership Model**, dividing administrative responsibility, spatial usage, and technology implementation between Shademakers UK and Vectis ONE. By utilising Department Ryde's Fitting Room as the physical workspace and drawing on the proven operational success of the Bembridge Fort Open Day, the bid presents an audited, low-risk execution plan designed for maximum trust.
+    </p>
+
+    <h2>2. Division of Responsibilities</h2>
+    <p>
+      To meet strict grant guidelines, the division of labor represents a complete segregation of fiduciary oversight and technical delivery:
+    </p>
+    <ul>
+      <li><strong>Shademakers UK (The Fiduciary Lead):</strong> Acts as the lead applicant and contracting authority. Shademakers holds overall legal and financial responsibility under the Isle of Wight Foundation SLA. They manage drawdowns, financial reporting, and the procurement trail.</li>
+      <li><strong>Isle Connect / Vectis ONE (The Delivery Contractor):</strong> Operates as the technical, training, and design contractor. Vectis ONE delivers the training curriculum, configures the offline database systems, installs the hardware, and oversees the local high street deployment.</li>
+    </ul>
+
+    <div class="callout-box">
+      <h4>💡 Strategic Positioning</h4>
+      <p>
+        Structuring the application with Shademakers UK as the fiduciary applicant bypasses the standard technical agency "startup risk." Shademakers brings an established £2.4 million funding track record and pre-existing institutional trust with the Isle of Wight Council (IWC) and Ryde Neighbourhood Board (RNB).
+      </p>
+    </div>
+  </main>
+
+  <!-- --- SECOND PAGE: FINANCIAL & OPERATIONAL AGREEMENT --- -->
+  <main class="document-page">
+    <h2>3. Financial Governance & Capital Assets</h2>
+    <p>
+      In absolute compliance with Section 3f of the Foundation's procurement guidelines, the £14,000 grant is exclusively allocated to durable material capital that will remain the permanent property of Shademakers UK. By removing the physical audio recording equipment, we have optimised the allocation for computing power, visual communication, and additive manufacturing:
+    </p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Asset Category</th>
+          <th>Description & Specifications</th>
+          <th>Budget Allocation</th>
+          <th>Owner of Asset</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>High-Performance Workstations</strong></td>
+          <td>Two (2) custom desktop units equipped with NVIDIA RTX graphics cards, optimised for local, offline AI rendering and dataset training.</td>
+          <td>£8,000</td>
+          <td>Shademakers UK</td>
+        </tr>
+        <tr>
+          <td><strong>Visual Interface storefront screen</strong></td>
+          <td>One (1) large 4K outward-facing display screen (suspended behind glass) serving as our public esplanade heritage portal.</td>
+          <td>£2,000</td>
+          <td>Shademakers UK</td>
+        </tr>
+        <tr>
+          <td><strong>Additive Manufacturing</strong></td>
+          <td>One (1) industrial-grade 3D printer and PLA materials for on-site printing of weatherproof "Sovereign Can" mounts.</td>
+          <td>£2,000</td>
+          <td>Shademakers UK</td>
+        </tr>
+        <tr>
+          <td><strong>Sovereign Infrastructure</strong></td>
+          <td>Non-invasive tension mounting rigs, local network switches, and local uninterruptible power supply (UPS) backup systems.</td>
+          <td>£2,000</td>
+          <td>Shademakers UK</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Match Funding Coordination (RNB Community Grant)</h3>
+    <p>
+      This capital expenditure operates in direct partnership with our pending **£20,000 Ryde Neighbourhood Board (RNB) Community Grant**, which is strictly reserved for the non-material training delivery, programming, and operations:
+    </p>
+    <ul>
+      <li><strong>Isle Connect Technical Consultancy & Licensing Fee (£12,000):</strong> Designing semantic schemas, configuring local LLM nodes, and licensing the Sovereign Heritage OS.</li>
+      <li><strong>Shademakers UK Programme Management Fee (£3,000):</strong> Oversight, local safeguarding, reporting, and SLA compliance.</li>
+      <li><strong>Direct Training & Educational Costs (£5,000):</strong> Printed VibeAI textbooks, esplanade student outreach, and Operation Geranium postcard print runs.</li>
+    </ul>
+
+    <div class="callout-box">
+      <h4>🎙️ Audio Infrastructure Rationalisation</h4>
+      <p>
+        Bypassing physical recording equipment is factually justified: our live Vercel demonstration proved that the Gemini 3.5 Flash Text-to-Speech (TTS) engine (configured to the non-rhotic "Algieba" style) delivers authentic, high-fidelity Received Pronunciation (RP) voiceovers at zero hardware cost. By redirecting those funds into two high-performance GPU workstations, a large 4K storefront display, and an industrial 3D printer, we transform the Fitting Room into an advanced "additive manufacturing and AI design centre." The 3D printer enables youth apprentices to physically print custom, weather-proof PLA mounts to secure the "Sovereign Can" waypoints to historic brickwork without damaging protected Grade II facades.
+      </p>
+    </div>
+
+    <h2>4. Workspace SLA: The Fitting Room</h2>
+    <p>
+      The physical training facility—known as **The Albion Frequency AI Design Centre**—will be hosted in the Fitting Room inside Department Ryde (29-30 Cross Street). To ensure mutual protection and clear operational boundaries, the following SLA requirements are established:
+    </p>
+
+    <table class="specs-table">
+        <thead>
+            <tr>
+                <th>Requirement Category</th>
+                <th>Specification Parameter</th>
+                <th>Reversibility Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Space Allocation</strong></td>
+                <td>Minimum 15 m² inside Department Ryde’s Fitting Room. [11]</td>
+                <td>100% Reversible. No structural changes. [Sovereign AI: Infographic]</td>
+            </tr>
+            <tr>
+                <td><strong>AI Workstations</strong></td>
+                <td>Two high-performance GPU workstations (NVIDIA RTX) for local, offline rendering and TypeDB training. [11, 18]</td>
+                <td>Non-fixed, fully movable hardware. [Sovereign AI: Infographic]</td>
+            </tr>
+            <tr>
+                <td><strong>Visual Interface</strong></td>
+                <td>One large, high-resolution 4K storefront display screen (suspended behind glass) [11, Sovereign AI: Infographic].</td>
+                <td>Non-invasive tension mountings. Zero drilling into historic masonry [Sovereign AI: Infographic].</td>
+            </tr>
+            <tr>
+                <td><strong>Additive Manufacturing</strong></td>
+                <td>One industrial-grade 3D printer and PLA materials for on-site printing of 'Sovereign Can' waypoint mounts [11, Sovereign AI: Infographic].</td>
+                <td>Fully portable desktop apparatus.</td>
+            </tr>
+            <tr>
+                <td><strong>Power & Network</strong></td>
+                <td>33kV-compatible local UPS backup power and secure P2P WightFibre routing [1, Data Centre Approval].</td>
+                <td>Standard socket connections. Zero cable-channel cutting.</td>
+            </tr>
+        </tbody>
+    </table>
+  </main>
+
+  <!-- --- THIRD PAGE: INTELLECTUAL PROPERTY & SIGN-OFF --- -->
+  <main class="document-page">
+    <h2>5. Intellectual Property & Code Ownership</h2>
+    <p>
+      This section establishes clear boundaries regarding software intellectual property (IP), proprietary assets, and open-source contributions:
+    </p>
+    <ul>
+      <li><strong>Proprietary Core:</strong> The software base—including the *Sovereign Heritage OS*, the *Wander Protocol*, and the *VibeAI* curriculum formulas—remains the sole intellectual property of Vectis ONE. Shademakers UK is granted a perpetual, non-exclusive, royalty-free licence to run the local system within their premises and operations.</li>
+      <li><strong>Historical Data & Archive Assets:</strong> The verified historical data, images, and audio narration records compiled by Tim Wander (CEng) remain under the sovereign stewardship of the community and local curators.</li>
+      <li><strong>Physical Capital:</strong> As required by the grant conditions, all physical hardware purchased using the £14,000 Isle of Wight Foundation grant remains the permanent, unencumbered property of Shademakers UK.</li>
+    </ul>
+
+    <h2>6. Risk Management & Safeguarding</h2>
+    <p>
+      The programme operates under strict statutory protocols to protect young adult apprentices and isolated senior citizens.
+    </p>
+    <ul>
+      <li><strong>Youth Cohort Safeguarding:</strong> Delivered in strict alignment with Network Ryde’s established, pre-drafted organisational policies. All personnel involved in direct training delivery must hold active Enhanced DBS checks.</li>
+      <li><strong>Grassroots Delivery Integrity:</strong> Postcards and physical geraniums will be distributed in partnership with Operation Geranium (Steve Double) and Age UK Isle of Wight, utilising experienced local workers who maintain existing, trusted relationships with isolated households.</li>
+      <li><strong>Data Privacy & GDPR:</strong> The system is designed local-first. All data compiled from users scanning the "Sovereign Cans" or navigating the trail is held on the local GPU nodes in Ryde. No user tracking or behavioural data is sent to external, third-party cloud servers.</li>
+      <li><strong>Cloud Ecosystem Integration:</strong> In the first instance, the training delivery utilises the standard Google Ecosystem. By leveraging Google accounts and Google Workspace, students log in easily and manage their data and files within their own personal cloud environments. This ensures data sovereignty, mitigates complex security administration, and reduces operational overhead in the setup phase.</li>
+    </ul>
+
+    <h2>7. Execution and Approvals</h2>
+    <p>
+      By signing below, both parties formally agree to the division of responsibilities, asset procurement plans, and IP licensing terms detailed in this memorandum. This document serves as the governing framework for the formal grant agreement with the Isle of Wight Foundation.
+    </p>
+
+    <div class="sign-off-block">
+      <div>
+        <p><strong>For Shademakers UK:</strong></p>
+        <div class="signature-line">
+          Zoe Thompson, Executive Director
+        </div>
+        <p style="font-size: 11px; color: #718096; text-align: center; margin-top: 5px;">Date</p>
+      </div>
+      <div>
+        <p><strong>For Vectis ONE / Isle Connect:</strong></p>
+        <div class="signature-line">
+          Lead Technical Director
+        </div>
+        <p style="font-size: 11px; color: #718096; text-align: center; margin-top: 5px;">Date</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- --- FOURTH PAGE: APPENDIX / COPY-PASTEABLE TEXTS --- -->
+  <main class="document-page">
+    <h2>8. Appendix: Official Application Draft Texts</h2>
+    <p>
+      Below is the copy-pasteable text for the grant applications, updated for the revised budget.
+    </p>
+
+    <h3>A. Isle of Wight Foundation Application Text (Q1)</h3>
+    <div class="callout-box" style="border-left-color: var(--navy);">
+      <strong>Q1. Briefly describe the project, its main objectives, and how it aligns with our focus areas (Max 300 words)</strong>
+      <br><br>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 12px;">
+        The Ryde Youth Digital Archive & Sovereign Heritage Program is a collaborative, local-first initiative delivered by Shademakers UK and Vectis ONE [11]. The project establishes 'The Albion Frequency AI Design Centre' inside Department Ryde’s Fitting Room to execute the Foundation's dual priorities of Access to Employment and Building Better Communities [11, 15].
+      </p>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 12px;">
+        Access to Employment: We are addressing high youth unemployment by training Ryde’s vulnerable youth (aged 16–25) in advanced, future-proof digital engineering—including local-first system operations, semantic database design (TypeDB), and 3D additive manufacturing [11, 18, Vibe Coding]. This equips them with technical, trade-based skills that cannot be automated away, leading directly to paid local support roles within our independent hospitality network [11, 18].
+      </p>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 12px;">
+        Building Better Communities: We are bringing Ryde’s unique history to life [11]. Our apprentices will use their new skills to design and print physical, local-history postcards [11]. In partnership with Operation Geranium and Age UK Isle of Wight, these postcards will be hand-delivered alongside fresh, locally grown potted geraniums to isolated seniors across the Island, combatting deep-seated loneliness and social exclusion [1.3.2].
+      </p>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 12px;">
+        Material Capital Spend: The entire £14,000 grant is reserved strictly for material capital investment, which will remain the permanent property of Shademakers UK [15]:
+      </p>
+      <ul style="font-size: 12.5px; text-align: left; padding-left: 20px; margin-bottom: 12px;">
+        <li>HPC Workstations: Two high-performance GPU workstations (NVIDIA RTX) for local, offline AI rendering and dataset training [11].</li>
+        <li>Visual Interface: One large 4K outward-facing display screen to serve as our public high-street heritage portal [11, Sovereign AI: Infographic].</li>
+        <li>3D Additive Manufacturing: One industrial-grade 3D printer and PLA filaments, enabling apprentices to print weather-proof mounts and physical frames for our localised 'Sovereign Can' high-street waypoints [11, Sovereign AI: Infographic].</li>
+        <li>Sovereign Infrastructure: Non-invasive mounting rigs, local network switches, and local UPS backup power systems [1, Data Centre Approval].</li>
+      </ul>
+    </div>
+
+    <h3>B. Ryde Neighbourhood Board Grant Application Text (Section 5e)</h3>
+    <div class="callout-box" style="border-left-color: var(--navy);">
+      <strong>Section 5e: Project Costs & Value for Money</strong>
+      <br><br>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 12px;">
+        The total project cost is £34,000. We are requesting a £20,000 grant from the RNB, paired with a £14,000 match-funding application currently pending review with the Isle of Wight Foundation (Vinci/Island Roads) [15].
+      </p>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 12px;">
+        The £20,000 RNB grant is strictly reserved for non-material, direct project delivery and operational upskilling costs [15, RNB Application Form, p. 3]:
+      </p>
+      <ul style="font-size: 12.5px; text-align: left; padding-left: 20px; margin-bottom: 12px;">
+        <li>Isle Connect Technical Consultancy & Licensing Fee (£12,000): Designing the local TypeDB semantic schemas, configuring the local, offline LLM nodes, managing the high-street trials, and licensing the Sovereign Heritage OS software [11, 15, Vibe Coding].</li>
+        <li>Shademakers UK Programme Management Fee (£3,000): Project management, local safeguarding, reporting, and SLA compliance [11].</li>
+        <li>Direct Training & Educational Costs (£5,000): Printed VibeAI textbooks, local student outreach, and Operation Geranium postcard print runs [11, 1.3.2].</li>
+      </ul>
+      <p style="font-size: 13px; text-align: left; margin-bottom: 0;">
+        By utilising existing, cloud-based AI text-to-speech models for our audio voiceovers, we have completely eliminated the need for expensive physical recording studios, ensuring that every pound of public funding is directed strictly toward local high-street business recovery and youth upskilling [11, 18, en-GB Prompting Guide].
+      </p>
+    </div>
+  </main>
+
+</body>
+</html>

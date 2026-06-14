@@ -789,7 +789,7 @@
                 })
                 .catch(err => {
                     console.error('Failed to load local narrative claims database.', err);
-                    audioTextElement.textContent = `"Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?"`;
+                    audioTextElement.textContent = `"Welcome to Regina House, built in 1865! You are standing outside the very studio of Jabez Hughes, Queen Victoria's personal Royal Photographer. Look up—those stone figures of the Four Seasons have stood guard here for over a century and a half. They’ve watched the crowned heads of Europe, nobles, and artists walk through these doors to have their portraits taken. Today, 'Summer' has awakened to guide you on your quest. Listen to her riddle, and follow her gaze up the hill to find your next dispatch..."`;
                 });
 
             // --- WEB AUDIO API SOUND SYSTEM ---
@@ -855,7 +855,7 @@
             let isSpeaking = false;
             
             function speakCodyIntel() {
-                const text = claimsManifest ? claimsManifest.narrative : 'Did you know that in 1862, the building you are standing outside of was the secret administrative Foreign Office of the British Empire?';
+                const text = claimsManifest ? claimsManifest.narrative : "Welcome to Regina House, built in 1865! You are standing outside the very studio of Jabez Hughes, Queen Victoria's personal Royal Photographer. Look up—those stone figures of the Four Seasons have stood guard here for over a century and a half. They’ve watched the crowned heads of Europe, nobles, and artists walk through these doors to have their portraits taken. Today, 'Summer' has awakened to guide you on your quest. Listen to her riddle, and follow her gaze up the hill to find your next dispatch...";
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
                     const utterance = new SpeechSynthesisUtterance(text);
@@ -900,20 +900,13 @@
 
             // --- STATE 1: SCAN SIMULATION ---
             btnSimulateScan.addEventListener('click', () => {
-                playSound('click');
-                // Shutter animation style feedback
-                btnSimulateScan.style.transform = 'translate(2px, 2px)';
-                btnSimulateScan.style.boxShadow = '1px 1px 0px var(--stark-black)';
+                playSound('scan');
+                switchState('intel');
+                
+                tabIntel.classList.add('unlocked');
+                tabIntel.disabled = false;
 
-                setTimeout(() => {
-                    playSound('scan');
-                    switchState('intel');
-                    
-                    tabIntel.classList.add('unlocked');
-                    tabIntel.disabled = false;
-
-                    startIntelAudit();
-                }, 150);
+                startIntelAudit();
             });
 
             // --- STATE 2: INTEL PROGRESS & AUDIO SIMULATION ---
